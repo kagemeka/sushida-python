@@ -1,6 +1,7 @@
 FROM python:3.9-alpine
 
 ARG VER=0.29.0
+COPY py/requirements.txt .
 RUN \
   apk add \
   firefox \
@@ -8,7 +9,8 @@ RUN \
   ttf-liberation \
   font-noto-cjk \
   font-noto-emoji \
-  && pip install selenium \
+  && pip install -Uqr requirements.txt \
+  && rm requirements.txt \
   && wget https://github.com/mozilla/geckodriver/releases/download/v$VER/geckodriver-v$VER-linux64.tar.gz \
   && tar -C /usr/bin/ \
   -xvzf geckodriver*.tar.gz \
