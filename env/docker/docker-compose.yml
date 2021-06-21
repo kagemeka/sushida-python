@@ -1,0 +1,27 @@
+version: '3.9'
+
+
+services:
+  py:
+    build:
+      context: ..
+      dockerfile: 
+        docker/Dockerfile
+    env_file:
+      - common.env
+    image: kagemeka/sushida-py
+    network_mode: host
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - type: bind
+        bind:
+          propagation: rprivate
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix
+        read_only: false
+        volume:
+          nocopy: true
+      - type: bind
+        source: $ROOT
+        target: /root/$PROJECT
