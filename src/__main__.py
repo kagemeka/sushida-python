@@ -1,5 +1,7 @@
 import selenium
 from selenium.webdriver import(
+  Chrome,
+  ChromeOptions,
   Firefox,
 )
 import time
@@ -46,7 +48,36 @@ def main():
     url=cfg.scrape_url,
   )
 
+  driver.close()
+
+  from webdriver_manager.chrome \
+  import (
+    ChromeDriverManager,
+  )
+
+  options = ChromeOptions()
+  opts = [
+    '--no-sandbox',
+    # '--headless',
+    '--disable-dev-shm-usage',
+  ]
+  
+
+  for x in opts:
+    options.add_argument(x)
+
+
+  manager = ChromeDriverManager()
+
+  driver = Chrome(
+    manager.install(),
+    options=options,
+  )
+  driver.get(
+    url=cfg.scrape_url,
+  )
   # driver.close()
+
 
 
 if __name__ == '__main__':

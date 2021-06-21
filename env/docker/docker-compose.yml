@@ -7,11 +7,15 @@ services:
       context: ..
       dockerfile: 
         docker/Dockerfile
+    devices:
+      - /dev/video0:/dev/video0
     env_file:
       - common.env
     image: kagemeka/sushida-py
+    # image: selenium/standalone-firefox
     network_mode: host
     restart: unless-stopped
+    runtime: nvidia
     tty: true
     volumes:
       - type: bind
