@@ -25,4 +25,4 @@ $ docker-compose down
 # Sample result
 The screenshot of the result is saved as `data/result.png`
 after the program done successfly.
-![sample score](docs/resources/result.png)
+![sample score](./docs/resources/result.png)
