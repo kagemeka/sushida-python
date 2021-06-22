@@ -1,6 +1,8 @@
 # FROM python:3.9-alpine
 
 FROM ubuntu:20.04
+SHELL ["/bin/bash", "-c"]
+ENV DEBIAN_FRONTEND=noninteractive
 ARG VER=0.29.0
 COPY py/requirements.txt .
 RUN \
