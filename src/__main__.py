@@ -143,7 +143,7 @@ def main():
   )
   import base64 
 
-  for i in range(1 << 6):
+  for i in range(150):
     b64_img = (
       elm.screenshot_as_base64
     )
@@ -163,11 +163,12 @@ def main():
     img = img.convert('L')
     img = img.point(
       lut=lambda x: (
-        255 if x > 127 else 0
+        (1 << 8) - 1 
+        if x >= 1 << 7 else 0
       ),
     )
     img = ImageOps.invert(img)
-    img.save('a.png')
+    # img.save('a.png')
     import pytesseract
     txt = pytesseract.image_to_string(
       img,
@@ -177,9 +178,9 @@ def main():
     print(txt.strip())
     
     pyautogui.write(txt.strip())
-    time.sleep(1)
+    time.sleep(0.1)
 
-  time.sleep(120)
+  time.sleep(200)
   
   driver.close()
 
