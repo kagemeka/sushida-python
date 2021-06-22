@@ -13,6 +13,7 @@ RUN \
   python3-dev \
   python3-pip \
   python3-tk \
+  tessract-ocr \
   wget \
   && pip install -Uqr requirements.txt \
   && rm requirements.txt \
