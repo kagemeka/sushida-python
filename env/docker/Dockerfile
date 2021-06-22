@@ -8,7 +8,9 @@ RUN \
   && apt install -yq=2 \
   firefox \
   fonts-noto-cjk \
+  python3-dev \
   python3-pip \
+  python3-tk \
   wget \
   && pip install -Uqr requirements.txt \
   && rm requirements.txt \

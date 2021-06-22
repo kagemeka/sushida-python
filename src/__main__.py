@@ -3,6 +3,21 @@ from selenium.webdriver import(
   Chrome,
   ChromeOptions,
   Firefox,
+  ActionChains,
+)
+
+from \
+  selenium.webdriver \
+  .common.by \
+import (
+  By,
+)
+
+from \
+  selenium.webdriver \
+  .common.keys \
+import (
+  Keys,
 )
 import time
 import requests
@@ -43,12 +58,12 @@ def main():
   )
   print(cfg)
 
-  driver = Firefox()
-  driver.get(
-    url=cfg.scrape_url,
-  )
+  # driver = Firefox()
+  # driver.get(
+  #   url=cfg.scrape_url,
+  # )
 
-  driver.close()
+  # driver.close()
 
   from webdriver_manager.chrome \
   import (
@@ -59,7 +74,9 @@ def main():
   opts = [
     '--no-sandbox',
     # '--headless',
-    '--disable-dev-shm-usage',
+    # '--disable-dev-shm-usage',
+    # '--start-fullscreen',
+    # '--start-maximized',
   ]
   
 
@@ -76,7 +93,53 @@ def main():
   driver.get(
     url=cfg.scrape_url,
   )
-  # driver.close()
+  elm = driver.find_element(
+    by=By.CLASS_NAME,
+    value='main_play',
+  )
+  elms = elm.find_elements(
+    by=By.TAG_NAME,
+    value='a',
+  )
+  elms[0].click()
+  
+  time.sleep(1 << 3)
+  elm = driver.find_element(
+    by=By.ID,
+    value='#canvas',
+  )
+
+  act = ActionChains(
+    driver,
+  ).move_to_element_with_offset(
+    elm,
+    250,
+    250,
+  ).click().release()
+  act.perform()
+  time.sleep(1)
+
+  act = ActionChains(
+    driver,
+  ).move_to_element_with_offset(
+    elm,
+    250,
+    320,
+  ).click().release()
+  act.perform()
+  time.sleep(1)
+  import pyautogui
+  print(driver.get_window_position())
+  print(
+    driver.get_window_rect()
+  )
+  pyautogui.press('enter')
+  # elm.send_keys(Keys.SPACE)
+  time.sleep(10)
+  
+  driver.close()
+
+  
 
 
 
