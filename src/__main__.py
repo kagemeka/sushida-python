@@ -76,7 +76,7 @@ def main():
     # '--headless',
     # '--disable-dev-shm-usage',
     # '--start-fullscreen',
-    # '--start-maximized',
+    '--start-maximized',
   ]
   
 
@@ -142,8 +142,9 @@ def main():
     ImageOps,
   )
   import base64 
+  import pytesseract
 
-  for i in range(179):
+  for i in range(180):
     b64_img = (
       elm.screenshot_as_base64
     )
@@ -154,10 +155,8 @@ def main():
       BytesIO(bytes_img),
     )
     w, h = img.size
-    print(img)
-    print(w, h)
     img = img.crop(
-      (65, 230, 435, 256)
+      (75, 228, 425, 257)
     )
     img = ImageOps.grayscale(img)
     img = img.convert('L')
@@ -168,21 +167,19 @@ def main():
       ),
     )
     img = ImageOps.invert(img)
-    # img.save('a.png')
-    import pytesseract
     txt = pytesseract.image_to_string(
       img,
       config="-c tessedit_char_whitelist=0123456789abcdefghijklmnopqrstuvwxyz!?-,",
-    )
-
+    ).strip()
+    print(txt)
     
-    print(txt.strip())
-    
-    pyautogui.write(txt.strip())
-    time.sleep(0.2)
+    pyautogui.write(txt)
+    time.sleep(0.4)
 
-  time.sleep(220)
-  
+  time.sleep(180)
+  elm.screenshot(
+    'data/result.png',
+  )
   driver.close()
 
   

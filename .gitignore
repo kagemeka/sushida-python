@@ -1,6 +1,7 @@
 __pycache__
-core
+/core
 .ipynb_checkpoints
+/data/*
 *.png
 *.log
 !.gitkeep
