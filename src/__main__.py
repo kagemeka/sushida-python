@@ -2,7 +2,6 @@ import selenium
 from selenium.webdriver import(
   Chrome,
   ChromeOptions,
-  Firefox,
   ActionChains,
 )
 
@@ -52,18 +51,8 @@ def main():
   )
   cfg = load_yml(cfg_path)
   cfg = Cfg(
-    scrape_url=(
-      cfg['scrape_url']
-    ),
+    **load_yml(cfg_path),
   )
-  print(cfg)
-
-  # driver = Firefox()
-  # driver.get(
-  #   url=cfg.scrape_url,
-  # )
-
-  # driver.close()
 
   from webdriver_manager.chrome \
   import (
@@ -130,10 +119,6 @@ def main():
   act.perform()
   time.sleep(1)
   import pyautogui
-  print(driver.get_window_position())
-  print(
-    driver.get_window_rect()
-  )
   pyautogui.press('space')
   time.sleep(3)
   from io import BytesIO
@@ -154,10 +139,11 @@ def main():
     img = Image.open(
       BytesIO(bytes_img),
     )
-    w, h = img.size
-    img = img.crop(
-      (75, 228, 425, 257)
-    )
+    w, _ = img.size
+    pad = 76   
+    img = img.crop((
+      pad, 228, w - pad, 256,
+    ))
     img = ImageOps.grayscale(img)
     img = img.convert('L')
     img = img.point(
@@ -171,10 +157,11 @@ def main():
       img,
       config="-c tessedit_char_whitelist=0123456789abcdefghijklmnopqrstuvwxyz!?-,",
     ).strip()
+
     print(txt)
     
     pyautogui.write(txt)
-    time.sleep(0.4)
+    time.sleep(0.1)
 
   time.sleep(180)
   elm.screenshot(

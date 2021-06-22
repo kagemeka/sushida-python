@@ -7,15 +7,18 @@ services:
       context: ..
       dockerfile: 
         docker/Dockerfile
-    devices:
-      - /dev/video0:/dev/video0
+    command: [
+      /usr/bin/python3,
+      ./src/__main__.py,
+    ]
+    # devices:
+    #   - /dev/video0:/dev/video0
     env_file:
       - common.env
     image: kagemeka/sushida-py
-    # image: selenium/standalone-firefox
     network_mode: host
     restart: unless-stopped
-    runtime: nvidia
+    # runtime: nvidia
     tty: true
     volumes:
       - type: bind
@@ -29,3 +32,4 @@ services:
       - type: bind
         source: $ROOT
         target: /root/$PROJECT
+    working_dir: /root/$PROJECT
