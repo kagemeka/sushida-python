@@ -1,5 +1,6 @@
 beautifulsoup4==4.9.3
 pyautogui==0.9.52
+pytesseract==0.3.7
 python-xlib==0.30
 PyYAML==5.4.1
 requests==2.25.1
