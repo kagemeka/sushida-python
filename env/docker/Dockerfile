@@ -17,7 +17,7 @@ RUN \
   wget \
   && pip install -Uqr requirements.txt \
   && rm requirements.txt \
-  && wget https://github.com/mozilla/geckodriver/releases/download/v{$GECKO_VER}/geckodriver-v${GECKO_VER}-linux64.tar.gz \
+  && wget https://github.com/mozilla/geckodriver/releases/download/v${GECKO_VER}/geckodriver-v${GECKO_VER}-linux64.tar.gz \
   && tar -C /usr/bin/ \
   -xvzf geckodriver*.tar.gz \
   && rm geckodriver* \
