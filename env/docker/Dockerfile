@@ -3,7 +3,7 @@
 FROM ubuntu:20.04
 SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
-ARG VER=0.29.0
+ARG GECKO_VER=0.29.0
 COPY py/requirements.txt .
 RUN \
   apt update -q=2 \
@@ -17,7 +17,7 @@ RUN \
   wget \
   && pip install -Uqr requirements.txt \
   && rm requirements.txt \
-  && wget https://github.com/mozilla/geckodriver/releases/download/v$VER/geckodriver-v$VER-linux64.tar.gz \
+  && wget https://github.com/mozilla/geckodriver/releases/download/v{$GECKO_VER}/geckodriver-v${GECKO_VER}-linux64.tar.gz \
   && tar -C /usr/bin/ \
   -xvzf geckodriver*.tar.gz \
   && rm geckodriver* \
@@ -26,4 +26,3 @@ RUN \
   && apt --yes install \
   ./google-chrome-stable_current_amd64.deb \
   && rm google-chrome-stable_current_amd64.deb 
-
