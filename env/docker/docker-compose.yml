@@ -11,14 +11,13 @@ services:
       /usr/bin/python3,
       ./src/__main__.py,
     ]
-    # devices:
-    #   - /dev/video0:/dev/video0
     env_file:
       - common.env
     image: kagemeka/sushida-py
+    init: true
     network_mode: host
-    restart: unless-stopped
-    # runtime: nvidia
+    restart: on-failure
+    stdin_open: true
     tty: true
     volumes:
       - type: bind
