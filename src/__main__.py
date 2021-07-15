@@ -1,3 +1,15 @@
+from kgmk.yml import (
+  Load as LoadYml,
+)
+from kgmk.sushida import (
+  Sushida,
+  SushidaCfg,
+)
+from lib import (
+  create_driver,
+)
+
+
 def set_globals():
   global cfd, root
   import os
@@ -10,22 +22,29 @@ def set_globals():
     
 def main():
   set_globals()
-  from lib import (
-    LoadYml,
-    Sushida,
-    SushidaCfg,
-  )
   load_yml = LoadYml()
   cfg_path = (
     f'{root}/config.yml'
   )
   cfg = load_yml(cfg_path)
-  cfg['data_dir'] = (
-    f'{root}/data/'
+  sushida_cfg = SushidaCfg(
+    **cfg['sushida'],
+    result_path=(
+      f'{root}data/result.png'
+    ),
   )
-  cfg = SushidaCfg(**cfg)
-  with Sushida(cfg) as sushida:
-    sushida()
+  print(cfg)
+  driver = create_driver(
+    cfg[
+      'webdriver'
+    ][
+      'headless'
+    ],
+  )
+  sushida = Sushida(
+    sushida_cfg,
+  )
+  sushida(driver)
 
 
 if __name__ == '__main__':

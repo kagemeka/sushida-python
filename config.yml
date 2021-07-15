@@ -1,5 +1,6 @@
-scrape_url: 
-  'http://typingx0.net/sushida/'
-repetitions: 200
-interval: 0.2
+sushida:
+  repetitions: 64
+  interval: 0.2
 
+webdriver:
+  headless: false
