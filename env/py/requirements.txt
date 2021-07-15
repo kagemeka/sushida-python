@@ -1,1 +1,1 @@
-kagemeka[sushida]==0.1.14
+kagemeka[sushida]==0.1.15
