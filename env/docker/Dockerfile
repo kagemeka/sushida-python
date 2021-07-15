@@ -1,10 +1,7 @@
-# FROM python:3.9-alpine
-
 FROM ubuntu:20.04
 SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 ARG GECKO_VER=0.29.0
-COPY py/requirements.txt .
 RUN \
   apt update -q=2 \
   && apt install -yq=2 \
@@ -15,8 +12,6 @@ RUN \
   python3-tk \
   tesseract-ocr \
   wget \
-  && pip install -Uqr requirements.txt \
-  && rm requirements.txt \
   && wget https://github.com/mozilla/geckodriver/releases/download/v${GECKO_VER}/geckodriver-v${GECKO_VER}-linux64.tar.gz \
   && tar -C /usr/bin/ \
   -xvzf geckodriver*.tar.gz \
@@ -26,3 +21,8 @@ RUN \
   && apt --yes install \
   ./google-chrome-stable_current_amd64.deb \
   && rm google-chrome-stable_current_amd64.deb 
+
+COPY py/requirements.txt .
+RUN \
+  pip install -r requirements.txt \
+  && rm requirements.txt \
