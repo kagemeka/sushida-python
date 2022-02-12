@@ -1,6 +1,0 @@
-sushida:
-  repetitions: 64
-  interval: 0.2
-
-webdriver:
-  headless: false

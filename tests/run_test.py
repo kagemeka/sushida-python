@@ -1,9 +1,12 @@
 import os
 
+import pytest
+
 import sushida.game
 import sushida.webdriver
 
 
+@pytest.mark.skip(reason="cannot use DISPLAY on actions.")
 def test_run() -> None:
     save_path = "/tmp/result.png"
     if os.path.exists(save_path):
