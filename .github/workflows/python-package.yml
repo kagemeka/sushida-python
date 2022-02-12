@@ -32,4 +32,4 @@ jobs:
         run: |
           source $HOME/.poetry/env
           export DISPLAY=:0
-          ./scripts/ci.sh
+          ./scripts/ci_no_test.sh

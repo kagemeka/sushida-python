@@ -13,4 +13,3 @@ root=$(dirname "$(get_current_file_directory)")
 "$root"/scripts/precommit.sh
 "$root"/scripts/format.sh
 "$root"/scripts/lint.sh
-"$root"/scripts/testing.sh

@@ -1,29 +1,22 @@
-# sushida-py
-The RPA tool for Sushida with Python
+# Sushida Python
+A Sushida tool for Python
 
-
-# Environment
-- ubuntu:20.04
-- [docker](https://www.docker.com/)
-- [docker-compose](https://docs.docker.com/compose/install/)
-
-
-# Usage
-## start
+## quick start
+###
 ```sh
-$ xhost + \
-  && cd ./env/docker/ \
-  && docker-compose up
+$ pip install sushida
+$ sushida run --headless --result-save-path result.png
 ```
 
-## stop forcely
+### in case using docker.
 ```sh
-$ docker-compose down
+$ xhost +
 ```
+
 
 
 ## Sample result
-The screenshot of the result is saved as `data/result.png`
-after the program done successfly.
+
 ![score](./docs/static/score.png)
+
 ![rank](./docs/static/rank.png)
