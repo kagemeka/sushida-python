@@ -11,17 +11,6 @@ class ChromeOptions:
     start_maximized: bool = True
 
 
-# def _get_option_strings() -> None:
-#     ...
-
-
-# def _options_to_dict(options: _ChromeOptions) -> dict:
-#     return {
-#         "--no-sandbox": options.no_sandbox,
-#         "--start-maximized": options.start_maximized,
-#     }
-
-
 def create_chrome_driver(
     headless: bool = False,
 ) -> selenium.webdriver.remote.webdriver.WebDriver:

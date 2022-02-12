@@ -1,6 +1,7 @@
+import os
+
 import sushida.game
 import sushida.webdriver
-import os
 
 
 def test_run() -> None:
