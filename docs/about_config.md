@@ -1,4 +1,4 @@
-# About Config 
+# About Config
 The config file is `config.yml` directly under the root directory.
 
 

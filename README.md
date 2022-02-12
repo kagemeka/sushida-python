@@ -1,28 +1,29 @@
-# sushida-py
-The RPA tool for Sushida with Python
+# Sushida Python
+A Sushida tool for Python
+
+[![Python package](https://github.com/kagemeka/sushida-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/kagemeka/sushida-python/actions/workflows/python-package.yml)
+[![Documentation Status](https://readthedocs.org/projects/sushida/badge/?version=latest)](https://sushida.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version](https://badge.fury.io/py/sushida.svg)](https://badge.fury.io/py/sushida)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-# Environment
-- ubuntu:20.04
-- [docker](https://www.docker.com/)
-- [docker-compose](https://docs.docker.com/compose/install/)
 
-
-# Usage
-## start 
+## quick start
+###
 ```sh
-$ xhost + \
-  && cd ./env/docker/ \
-  && docker-compose up
+$ pip install sushida
+$ sushida run --headless --result-save-path result.png
 ```
 
-## stop forcely
+### in case using docker.
 ```sh
-$ docker-compose down
+$ xhost +
 ```
 
 
-# Sample result
-The screenshot of the result is saved as `data/result.png`
-after the program done successfly.
-![sample score](./docs/resources/result.png)
+
+## Sample result
+
+![score](./docs/static/score.png)
+
+![rank](./docs/static/rank.png)
