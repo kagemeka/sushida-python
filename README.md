@@ -6,7 +6,7 @@ A Sushida tool for Python
 [![PyPI version](https://badge.fury.io/py/sushida.svg)](https://badge.fury.io/py/sushida)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-      
+
 
 ## quick start
 ###
