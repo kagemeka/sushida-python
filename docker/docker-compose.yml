@@ -1,19 +1,17 @@
 version: '3.9'
 
-
 services:
   py:
     build:
-      context: ..
-      dockerfile: 
-        docker/Dockerfile
-    command: [
-      /usr/bin/python3,
-      ./src/__main__.py,
-    ]
+      context: .
+      dockerfile: Dockerfile
+    # command: [
+    #   /usr/bin/python3,
+    #   ./src/__main__.py,
+    # ]
     env_file:
-      - common.env
-    image: kagemeka/sushida-py
+      - internal.env
+    image: kagemeka/$PROJECT_NAME:$PROJECT_VERSION
     init: true
     network_mode: host
     restart: on-failure
@@ -29,6 +27,6 @@ services:
         volume:
           nocopy: true
       - type: bind
-        source: $ROOT
-        target: /root/$PROJECT
-    working_dir: /root/$PROJECT
+        source: $PROJECT_ROOT
+        target: /root/$PROJECT_NAME
+    working_dir: /root/$PROJECT_NAME

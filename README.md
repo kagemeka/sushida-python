@@ -9,7 +9,7 @@ The RPA tool for Sushida with Python
 
 
 # Usage
-## start 
+## start
 ```sh
 $ xhost + \
   && cd ./env/docker/ \
@@ -22,7 +22,8 @@ $ docker-compose down
 ```
 
 
-# Sample result
+## Sample result
 The screenshot of the result is saved as `data/result.png`
 after the program done successfly.
-![sample score](./docs/resources/result.png)
+![score](./docs/static/score.png)
+![rank](./docs/static/rank.png)
