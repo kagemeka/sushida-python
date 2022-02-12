@@ -31,5 +31,5 @@ jobs:
       - name: format and lint and test
         run: |
           source $HOME/.poetry/env
-          export DISPLAY=0
+          export DISPLAY=:0
           ./scripts/ci.sh
